@@ -26,8 +26,8 @@ def order_pizza():
     print("Family")
     
     #presents user with input for order
-    pizza_type = input("Enter the type of pizza you want: ")
-    size = input("Enter the size of pizza (Personal/Medium/Family): ")
+    pizza_type = input("Enter the type of pizza you want: ").title()
+    size = input("Enter the size of pizza (Personal/Medium/Family): ").title()
 
     #Assigns the pizza type order ratios
     if pizza_type == "Margherita":
@@ -55,7 +55,7 @@ def order_pizza():
         #prevents for loop running if order invalid
         valid_order = False
 
-    #Check if pizza type is valid
+    #Prints order if input is valid
     if valid_order == True:
         #Prints start of order
         print("\nYour order summary:")

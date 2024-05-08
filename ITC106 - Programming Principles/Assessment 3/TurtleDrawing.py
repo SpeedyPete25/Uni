@@ -12,7 +12,7 @@ OUTPUT_SIZE = 36
 #drawing parameter prompts
 GRID_WIDTH = int(turtle.numinput("Grid Width","Enter Grid Width (600-2000): ", default=1000, minval=600, maxval=2000))
 GRID_HEIGHT = int(turtle.numinput("Grid Height","Enter Grid Height (600-1000): ", default=800, minval=600, maxval=1000))
-STEP = int(turtle.numinput("Grid Step Size","Enter grid Step size: ", default=100, minval=50, maxval=200))
+STEP = int(turtle.numinput("Grid Step Size","Enter Grid Step size: ", default=100, minval=50, maxval=200))
 
 #assigns location for clicked coordinates text output
 OUTPUT_X = -(GRID_WIDTH/2)
@@ -21,8 +21,7 @@ OUTPUT_Y = (GRID_HEIGHT/2) + 20
 
 #function to draw grid tick lines
 def draw_grid():
-    #starts grid drawing
-    turtle.penup()
+    #primes grid drawing
     turtle.pencolor(GRID_COLOR)
     
     #draws vertical tick lines
@@ -49,28 +48,29 @@ def draw_grid():
 
 #function to draw axis lines
 def draw_axis():
-    #draws y axis
-    turtle.penup()
+    #sets axis colour
     turtle.pencolor(AXIS_COLOR)
+    
+    #draws y axis
     turtle.goto(0, -GRID_HEIGHT // 2)
     turtle.pendown()
     turtle.goto(0, GRID_HEIGHT // 2)
+    turtle.penup()
     
     #draws x axis
-    turtle.penup()
     turtle.goto(-GRID_WIDTH // 2, 0)
     turtle.pendown()
     turtle.goto(GRID_WIDTH // 2, 0)
+    turtle.penup()
 
 #function to draw origin point
 def draw_origin():
-    turtle.penup()
     turtle.goto(0, 0)
     turtle.dot(ORIGIN_COLOR)
 
 #function to label axis markers
 def label_axis():
-    #primes tick labels
+    #sets label colour
     turtle.pencolor(LABEL_COLOR)
     
     #writes y axis grid ticks
@@ -104,7 +104,6 @@ def display_coordinates(x, y):
         turtle.penup()
         turtle.goto(x,y)
         turtle.pendown()
-        # turtle.setheading(90)
         turtle.stamp()
 
         #writes clicked coordinate
@@ -116,11 +115,12 @@ def display_coordinates(x, y):
 #main function
 def main():
     
-    #sets up the plot parameters
+    #sets up the plot
     turtle.setup(GRID_WIDTH + 200, GRID_HEIGHT + 200)
     turtle.tracer(0)
     turtle.hideturtle()
     turtle.title("Cartesian Coordinate Drawing")
+    turtle.penup()
     
     #draws the plot
     draw_grid()

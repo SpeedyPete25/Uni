@@ -103,12 +103,13 @@ def main():
 
         if choice == "1" or choice == "Region Demographics":
             print_region_list(data)
-            region = input("Enter the region name: ")
+            region = input("Enter the region name: ").title()
             display_region_demographics(data, region)
         elif choice == "2" or choice == "Age Group Distribution":
             plot_age_group_distribution(data)
         elif choice == "3" or choice == "Urban vs. Rural Population Chart":
-            region = input("Enter the region name: ")
+            print_region_list(data)
+            region = input("Enter the region name: ").title()
             plot_urban_vs_rural(data, region)
         elif choice == "4" or choice == "Top 5 Populated Regions Chart":
             plot_top_5_populated_regions(data)

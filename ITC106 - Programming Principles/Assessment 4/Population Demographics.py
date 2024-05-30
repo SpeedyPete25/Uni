@@ -8,8 +8,10 @@ def load_data(file_name):
     try:
         with open(file_name, 'r') as file:
             headers = file.readline().strip().split('|')
+            # print (headers)
             for line in file:
                 values = line.strip().split('|')
+                if len(values) <= 1: break
                 record = {headers[i]: values[i] for i in range(len(headers))}
                 data.append(record)
     except FileNotFoundError:
@@ -72,12 +74,18 @@ def plot_top_5_populated_regions(data):
     plt.ylabel('Population')
     plt.show()
 
+def print_region_list(data):
+    print ("---Region List---")
+    for region in data: 
+        print (region["Region"])
+
 #Main function
 #Prompts the user for the dataset file and presents a menu for different analysis options
 def main():
     
     #gets file name from user and loads it
-    file_name = input("Enter the dataset file name: ")
+    # file_name = input("Enter the dataset file name: ")
+    file_name = r"C:\Users\mfigm\Documents\Uni\ITC106 - Programming Principles\Assessment 4\popdata.txt"
     data = load_data(file_name)
 
     if not data:
@@ -93,17 +101,18 @@ def main():
 
         choice = input("Choose an option: ")
 
-        if choice == '1':
+        if choice == "1" or choice == "Region Demographics":
+            print_region_list(data)
             region = input("Enter the region name: ")
             display_region_demographics(data, region)
-        elif choice == '2':
+        elif choice == "2" or choice == "Age Group Distribution":
             plot_age_group_distribution(data)
-        elif choice == '3':
+        elif choice == "3" or choice == "Urban vs. Rural Population Chart":
             region = input("Enter the region name: ")
             plot_urban_vs_rural(data, region)
-        elif choice == '4':
+        elif choice == "4" or choice == "Top 5 Populated Regions Chart":
             plot_top_5_populated_regions(data)
-        elif choice == '5':
+        elif choice == "5" or choice == "Exit the program":
             print("Exiting the program.")
             break
         else:

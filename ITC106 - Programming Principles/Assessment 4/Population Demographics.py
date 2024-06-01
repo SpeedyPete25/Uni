@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import operator
 
 #loads population data from given file
 def load_data(file_name):
@@ -96,8 +95,7 @@ def print_region_list(data):
 def main():
     
     #gets file name from user and loads it
-    # file_name = input("Enter the dataset file name: ")
-    file_name = r"C:\Users\mfigm\Documents\Uni\ITC106 - Programming Principles\Assessment 4\popdata.txt"
+    file_name = input("Enter the dataset file name: ")
     data = load_data(file_name)
 
     #check incaase no file name

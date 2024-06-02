@@ -110,24 +110,24 @@ def main():
         print("2. Age Group Distribution")
         print("3. Urban vs. Rural Population Chart")
         print("4. Top 5 Populated Regions Chart")
-        print("5. Exit the program")
+        print("5. Exit the Program")
         #prompts user for input
-        choice = input("Choose an option: ")
-
+        choice = input("Choose an option: ").lower()
+        
         #takes user input and runs that options program
-        if choice == "1" or choice == "Region Demographics":
+        if choice == "1" or choice == "region demographics":
             print_region_list(data)
             region = input("Enter the region name: ").title()
             display_region_demographics(data, region)
-        elif choice == "2" or choice == "Age Group Distribution":
+        elif choice == "2" or choice == "age group distribution":
             plot_age_group_distribution(data)
-        elif choice == "3" or choice == "Urban vs. Rural Population Chart":
+        elif choice == "3" or choice == "urban vs. rural population chart":
             print_region_list(data)
             region = input("Enter the region name: ").title()
             plot_urban_vs_rural(data, region)
-        elif choice == "4" or choice == "Top 5 Populated Regions Chart":
+        elif choice == "4" or choice == "top 5 populated regions chart":
             plot_top_5_populated_regions(data)
-        elif choice == "5" or choice == "Exit the program":
+        elif choice == "5" or choice == "exit the program":
             print("Exiting the program.")
             break
         else:

@@ -98,8 +98,9 @@ def main():
     file_name = input("Enter the dataset file name: ")
     data = load_data(file_name)
 
-    #check incaase no file name
+    #check incase no file name
     if not data:
+        print("No valid file found.")
         return
 
     #user menu

@@ -1,0 +1,4 @@
+Region|Total Population|Male Population|Female Population|Urban Population|Rural Population|Children (0-14 years)|Adults (15-64 years)|Seniors (65+ years)
+Kansas City|100000|50000|50000|70000|30000|10000|60000|10000
+Boston|450000|225000|225000|330000|120000|80000|300000|50000
+Denver|500000|250000|250000|350000|150000|100000|350000|50000

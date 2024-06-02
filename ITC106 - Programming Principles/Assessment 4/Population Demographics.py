@@ -70,8 +70,7 @@ def plot_urban_vs_rural(data, region):
 #plots a bar chart representing the top 5 populated regions
 def plot_top_5_populated_regions(data):
     
-    #sorts regions by population size descending
-    #stores top 5 populations
+    #stores top 5 populations sorted by population size descending
     sorted_data = sorted(data, key=lambda x: int(x['Total Population']), reverse=True)[:5]
     regions = [item['Region'] for item in sorted_data]
     populations = [int(item['Total Population']) for item in sorted_data]

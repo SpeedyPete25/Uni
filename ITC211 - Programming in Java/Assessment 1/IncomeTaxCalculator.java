@@ -29,6 +29,8 @@ public class IncomeTaxCalculator {
         
         // Display the result
         System.out.printf("Tax is %.2f\n", tax);
+
+        input.close();
     }
     
     public static double computeTax(int status, double income, double[][] brackets, double[] rates) {

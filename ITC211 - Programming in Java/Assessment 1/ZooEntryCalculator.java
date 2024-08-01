@@ -14,10 +14,10 @@ public class ZooEntryCalculator {
                 break;
             }
             
-            System.out.print("Enter the number of children (age 6–15): ");
+            System.out.print("Enter the number of children (age 6-15): ");
             int children = input.nextInt();
             
-            System.out.print("Enter the number of adults (age 16–59): ");
+            System.out.print("Enter the number of adults (age 16-59): ");
             int adults = input.nextInt();
             
             System.out.print("Enter the number of seniors (age 60+): ");

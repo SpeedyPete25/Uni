@@ -15,24 +15,25 @@ public class IncomeTaxCalculator {
         // Rates
         double[] rates = {0.10, 0.15, 0.25, 0.28, 0.33, 0.35};
         
-        // Prompt the user to enter the filing status
+        // Prompts the user to enter the filing status
         System.out.println("Enter the filing status:");
         System.out.println("(0-single filer, 1-married jointly, 2-married separately, 3-head of household): ");
         int status = input.nextInt();
         
-        // Prompt the user to enter taxable income
+        // Prompts the user to enter taxable income
         System.out.print("Enter the taxable income: ");
         double income = input.nextDouble();
         
-        // Compute the tax
+        // Calculates the tax
         double tax = computeTax(status, income, brackets, rates);
         
-        // Display the result
+        // Displays the result
         System.out.printf("Tax is %.2f\n", tax);
 
         input.close();
     }
     
+    /// Function for calculating tax
     public static double computeTax(int status, double income, double[][] brackets, double[] rates) {
         double tax = 0;
         double[] bracket = brackets[status];

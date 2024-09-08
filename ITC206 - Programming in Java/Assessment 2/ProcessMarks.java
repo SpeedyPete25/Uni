@@ -116,10 +116,11 @@ public class ProcessMarks {
 
     // Main method for testing
     public static void main(String[] args) {
-        // Assuming getMarks is available and returns an array of marks.
-        // int[] marks = Marks.getMarks();
-        int[] marks = {85, 78, 92, 45, 62, 89, 75, 77, 61, 44, 90};
+        // Gets tests marks
+        int[] marks = Marks.getMarks();
+        // int[] marks = {85, 78, 92, 45, 62, 89, 75, 77, 61, 44, 90};
 
+        // Gets and prints grade statistics
         System.out.println("Max: " + max(marks));
         System.out.println("Min: " + min(marks));
         System.out.println("Range: " + range(marks));
@@ -127,12 +128,14 @@ public class ProcessMarks {
         System.out.println("Median: " + median(marks));
         System.out.println("Mode: " + mode(marks));
 
+        // Prints out grades as letter grades, new line every 30 grades
         char[] grades = grades(marks);
-        System.out.print("Grades: ");
+        System.out.print("Grades: \n");
         for (int i = 0; i < grades.length; i++) {
             System.out.print(grades[i] + (i % 30 == 29 ? "\n" : " "));
         }
 
+        // Prints grade distribution
         System.out.println("\nGrade Distribution:");
         int[] distn = gradeDistn(grades);
         char[] gradeLetters = {'A', 'B', 'C', 'D', 'E', 'F'};

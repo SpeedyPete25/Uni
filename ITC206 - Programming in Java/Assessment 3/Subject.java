@@ -1,104 +1,55 @@
-
-
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Subject {
+    private String name;
+    private String subjectCode;
 
-    // Method to read subjects from a file
-    public static ArrayList<Subject> loadSubjectsFromFile(String filename) throws IOException {
-        ArrayList<Subject> subjects = new ArrayList<>();
-        File file = new File(filename);
-        if (!file.exists()) {
-            file.createNewFile();
+    // Constructor for Subject class
+    public Subject(String name, String subjectCode) {
+        if (!isValidCode(subjectCode)) {
+            throw new IllegalArgumentException("Invalid subject code format.");
         }
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(",");
-            if (parts.length == 2 && Subject.isValidCode(parts[0])) {
-                subjects.add(new Subject(parts[1], parts[0]));
-            }
-        }
-        reader.close();
-        return subjects;
+        this.name = name;
+        this.subjectCode = subjectCode;
     }
 
-    // Method to save subjects to a file
-    public static void saveSubjectsToFile(ArrayList<Subject> subjects, String filename) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getSubjectCode() {
+        return subjectCode;
+    }
+
+    // Check if subject code matches the provided code
+    public boolean codeMatches(String code) {
+        return this.subjectCode.equals(code);
+    }
+
+    // toString method for Subject class
+    @Override
+    public String toString() {
+        return subjectCode + ": " + name;
+    }
+
+    // Validate if the subject code is valid: first three letters and last three digits
+    public static boolean isValidCode(String code) {
+        if (code.length() != 6) {
+            return false;
+        }
+        String alpha = code.substring(0, 3);
+        String digits = code.substring(3, 6);
+        return alpha.matches("[A-Za-z]+") && digits.matches("[0-9]+");
+    }
+
+    // Check if the subject code already exists in the list
+    public static boolean codeExists(ArrayList<Subject> subjects, String code) {
         for (Subject subject : subjects) {
-            writer.write(subject.getSubjectCode() + "," + subject.getName());
-            writer.newLine();
-        }
-        writer.close();
-    }
-
-    // Method to display all subjects
-    public static void displaySubjects(ArrayList<Subject> subjects) {
-        System.out.println("Existing subjects:");
-        for (Subject subject : subjects) {
-            System.out.println(subject);
-        }
-    }
-
-    // Method to add new subjects
-    public static void addNewSubjects(ArrayList<Subject> subjects) {
-        Scanner scanner = new Scanner(System.in);
-        String code, name;
-        boolean addingSubjects = true;
-
-        while (addingSubjects) {
-            System.out.println("Enter subject name: ");
-            name = scanner.nextLine();
-
-            System.out.println("Enter subject code (3 letters + 3 digits): ");
-            code = scanner.nextLine();
-
-            while (Subject.codeExists(subjects, code)) {
-                System.out.println("This code already exists! Please enter a new code:");
-                code = scanner.nextLine();
-            }
-
-            if (Subject.isValidCode(code)) {
-                subjects.add(new Subject(name, code));
-            } else {
-                System.out.println("Invalid subject code format. Please try again.");
-            }
-
-            System.out.println("Do you want to add another subject? (yes/no)");
-            String response = scanner.nextLine();
-            if (!response.equalsIgnoreCase("yes")) {
-                addingSubjects = false;
+            if (subject.codeMatches(code)) {
+                return true;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Subject> subjects = new ArrayList<>();
-        String filename = "subjects.txt";
-
-        try {
-            // Load existing subjects from file
-            subjects = loadSubjectsFromFile(filename);
-
-            // Display current subjects
-            if (!subjects.isEmpty()) {
-                displaySubjects(subjects);
-            }
-
-            // Add new subjects
-            addNewSubjects(subjects);
-
-            // Save updated subjects to file
-            saveSubjectsToFile(subjects, filename);
-
-            System.out.println("Subjects have been saved to the file.");
-
-        } catch (IOException e) {
-            System.out.println("Error handling the file: " + e.getMessage());
-        }
+        return false;
     }
 }
-

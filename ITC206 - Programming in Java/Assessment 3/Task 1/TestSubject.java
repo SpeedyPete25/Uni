@@ -67,10 +67,12 @@ public class TestSubject {
 
             System.out.println("Do you want to add another subject? (yes/no)");
             String response = scanner.nextLine();
-            if (!response.equalsIgnoreCase("yes")) {
+            if (!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("y")) {
                 addingSubjects = false;
             }
         }
+
+        scanner.close();
     }
 
     public static void main(String[] args) {

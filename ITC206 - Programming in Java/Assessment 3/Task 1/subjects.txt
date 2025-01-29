@@ -1,0 +1,5 @@
+ENG101,Engineering for Noobs
+SCI318,Long Words of Scientists
+ART109,Finger Painting
+MAT404,When 1+1 != 2
+GEO203,Licking Rocks
